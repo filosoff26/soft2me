@@ -1,0 +1,62 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <title>hello world</title>
+</head>
+<body>
+<div id="menu">
+    <input id="search-field" type="text">
+    <ul>
+        <li>новости</li>
+        <li>каталог</li>
+        <li>форум</li>
+        <li>обратная связь</li>
+    </ul>
+</div>
+<div id="disclaimer">
+    skype, vk, email
+</div>
+<div id="logo">
+    <img src='../img/logo.png' alt='soft2me'>
+</div>
+<div id="page-title" class="block">
+    site news
+</div>
+<div id="catalog" class="block">
+    <div id="catalog-title">
+        catalog
+    </div>
+    <ul>
+        <li>security</li>
+        <li>development</li>
+        <li>office</li>
+        <li>graphics</li>
+        <li>web-dev</li>
+        <li>system tools</li>
+        <li>multimedia</li>
+        <li>admin tools</li>
+    </ul>
+</div>
+<div id="content" class="block">
+    <div id="debug-log">
+        <h3>debug log</h3>
+    </div>
+</div>
+<script>
+    debug("error!");
+    function debug(msg) {
+        var log = document.getElementById("debug-log");
+        if (!log) {
+            log = document.createElement("div");
+            log.id = "debug-log";
+            log.innerHTML = "<h3>Debug Log</h3>";
+            document.body.appendChild(log);
+        }
+        var pre = document.createElement("pre");
+        var text = document.createTextNode(msg);
+        pre.appendChild(text);
+        log.appendChild(pre);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Digital Clock</title>
+    <style>
+        #clock {
+            font: bold 24pt sans;
+            background: #ddf;
+            padding: 10px;
+            border: solid #000000 2px;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function generateSummary() {
+            var captions = document.getElementsByTagName("h1");
+            var summaryHeader = document.createElement("h1");
+            summaryHeader.innerText = "Оглавление";
+            document.body.insertBefore(summaryHeader, captions[0]);
+            var list = document.createElement("ol");
+            for (var i = 1; i < captions.length; i++) {
+                var anchor = document.createElement("a");
+                anchor.name = i;
+                anchor.innerText = captions[i].innerText;
+                captions[i].innerHTML = anchor.outerHTML;
+                var li = document.createElement("li");
+                var link = document.createElement("a");
+                link.href = "#" + i;
+                link.innerText = captions[i].innerText;
+                li.innerHTML = link.outerHTML;
+                list.appendChild(li);
+            }
+            document.body.insertBefore(list, captions[1]);
+        }
+
+        function displayTime() {
+            document.title = "Digital Clock (" + window.innerWidth + "x" + window.innerHeight + ")";
+            var elt = document.getElementById("clock");
+            var now = new Date();
+            elt.innerHTML = now.toLocaleTimeString();
+            setTimeout(displayTime, 1000);
+        }
+        window.onload = function () {
+            document.getElementById("shake").addEventListener("click", function () {
+                shake("clock", null, 20, 500);
+            });
+            generateSummary();
+            displayTime();
+        }
+        function shake(e, oncomplete, distance, time) {
+            if (typeof e === "string") e = document.getElementById(e);
+            if (!time) time = 200;
+            if (!distance) distance = 15;
+            var originalStyle = e.style.cssText;
+            e.style.position = "relative";
+            var start = (new Date()).getTime();
+            animate();
+            function animate() {
+                var now = (new Date()).getTime();
+                var elapsed = now - start;
+                var fraction = elapsed / time;
+                var T = 20;
+                if (fraction < 1) {
+                    var x = distance * Math.sin(fraction * 4 * Math.PI);
+                    e.style.left = x + "px";
+                    setTimeout(animate, Math.min(T, time - elapsed));
+                }
+                else {
+                    e.style.cssText = originalStyle;
+                    if (oncomplete) oncomplete(e);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>Цифровые часы</h1>
+<span id="clock"></span>
+
+<div style="margin-top: 20px;"><input id="shake" type="submit" value="Shake it, baby!"></div>
+<h1>Введение</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tortor nisi, dapibus vitae sapien id, mattis
+    pulvinar felis. Quisque tempor ac ipsum ac venenatis. Suspendisse tempus ut erat et semper. Nunc vehicula tellus sit
+    amet augue euismod porttitor nec ac tortor. Donec condimentum est eu dolor mollis lobortis. Ut posuere ultrices
+    urna, id iaculis quam interdum eget. Nulla quam nibh, dapibus sed efficitur eget, auctor ut orci. Nulla facilisi.
+    Curabitur laoreet fringilla velit in auctor. Mauris commodo erat non tellus laoreet consequat. Nam nec vulputate ex.
+    Nulla eget lacus non neque consectetur accumsan eu interdum magna. Sed congue nulla lectus, nec tincidunt lectus
+    fermentum id. </p>
+
+<h1>Структура курса</h1>
+
+<p>Ut feugiat hendrerit dolor vel venenatis. Nullam et metus eu sem finibus condimentum dignissim nec lacus. Quisque dui
+    turpis, rutrum vitae venenatis sed, iaculis in lacus. Donec accumsan, nisl ut dapibus vulputate, lacus magna
+    accumsan magna, vitae pretium sapien quam nec diam. Praesent vitae felis interdum, aliquet elit vel, commodo odio.
+    Nulla varius, enim quis mattis lacinia, sapien mauris faucibus elit, at rutrum eros diam vitae felis. Morbi et
+    ultricies mi. </p>
+
+<h1>Технический цикл</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non ultrices felis, quis gravida enim. In hac
+    habitasse platea dictumst. Suspendisse pretium euismod volutpat. Nulla sit amet egestas enim. Aenean urna metus,
+    pretium non metus vitae, efficitur vehicula justo. Ut scelerisque convallis interdum. Nam vel tristique neque.
+    Integer feugiat eu nulla nec commodo. Sed quis tellus quam. Nunc dui mi, pulvinar rhoncus eros ut, auctor posuere
+    erat. Fusce nec nulla sapien. </p>
+
+<h1>Проблемы совмещения</h1>
+
+<p>Ut euismod ac tortor sed fermentum. Fusce enim urna, pulvinar vitae odio vitae, porttitor consectetur dolor. Nullam
+    vitae nibh vel arcu viverra hendrerit vitae id mi. Morbi ornare enim id ante convallis congue. Vestibulum ultrices
+    fermentum tristique. Etiam elementum scelerisque cursus. In mattis quis sem in ultricies. Donec et mattis libero, ac
+    porttitor augue. Integer ultricies tortor id ex hendrerit hendrerit. In elementum erat in est tristique, at
+    porttitor arcu feugiat. Mauris semper condimentum urna, vitae maximus nibh gravida ac. Quisque lacinia id tortor id
+    varius. Nulla ac ornare nibh. Vivamus in convallis enim. </p>
+</body>
+</html>

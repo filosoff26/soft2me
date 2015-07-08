@@ -1,0 +1,120 @@
+body {
+    width: 1000px;
+    margin: 0 auto;
+    font-family: Verdana, sans-serif;
+    background-image: url(../img/background_cleaned.svg);
+    background-size: cover;
+}
+
+div {
+    border-radius: 3px;
+}
+
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#menu {
+    height: 53px;
+    color: #fff;
+    background: url(../img/top-nav-bg.png) repeat-x;
+}
+
+#menu a, #menu a:visited {
+    color: #fff;
+}
+
+#menu ul {
+    width: 800px;
+    margin: 0 200px 0 0;
+    padding: 0;
+}
+
+#menu li {
+    display: inline-block;
+    margin-left: 20px;
+    height: 50px;
+    line-height: 50px;
+}
+
+#logo {
+    margin: 10px 0;
+    width: 400px;
+    height: 100px;
+}
+
+#disclaimer {
+    float: right;
+    width: 400px;
+    height: 100px;
+    margin-top: 10px;
+    text-align: right;
+}
+
+#page-title {
+    clear: both;
+    height: 30px;
+    margin: 10px 0;
+    padding: 5px;
+    line-height: 30px;
+}
+
+#catalog {
+    float: left;
+    width: 200px;
+    /*background: #FFC700;*/
+}
+
+#content {
+    margin-left: 210px;
+    width: 770px;
+    color: #000000;
+    /*text-shadow: 1px 1px 1px #20B9FF;*/
+    padding: 10px;
+}
+
+#search-field {
+    float: right;
+    width: 200px;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+#catalog-title {
+    /*background: #FFB400;*/
+    /* background: #66AACA; */
+    padding: 10px;
+}
+
+h3 {
+    margin: 0
+}
+
+.label {
+    display: inline-block;
+    width: 100px;
+}
+
+.login-button {
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.green {
+    color: darkgreen;
+}
+
+.red {
+    color: firebrick;
+}
+
+.block {
+    border: 1px solid black;
+    background: rgba(77, 201, 251, 0.46);
+}
+
+/*  #419ECA */

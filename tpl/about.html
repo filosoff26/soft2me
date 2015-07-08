@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Резюме - Степаненко Алексей</title>
+    <style type="text/css">
+        h1, h2 {
+            text-align: center;
+        }
+
+        .page {
+            width: 800px;
+            margin: 10px auto;
+            border: 1px solid black;
+            padding: 10px;
+            background: #fff;
+            box-shadow: #000 0 1px 3px;
+        }
+
+        body {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <h1>Степаненко Алексей Станиславович</h1>
+
+    <h2>Верстальщик HTML, 25 лет</h2>
+
+    <h3>Образование</h3>
+    <ul>
+        <li>Неполное высшее, СибГУТИ, ф-т ИВТ</li>
+        <li>Онлайн-курсы HTML Academy, базовый уровень (<a href="https://htmlacademy.ru/profile/id64736">профиль</a>)
+        </li>
+    </ul>
+
+
+    <h3>Опыт работы:</h3>
+    <ul>
+        <li>Ведение учебных курсов по основам программирования и веб-разработки (4 года)</li>
+        <li>Выполнение разовых заказов по верстке лендинг-страниц (<a href="#">здесь будут ссылки</a>)</li>
+        <li>Разработка и ведение любительского веб-сайта <a href="http://soft2me.ru/">soft2me.ru</a></li>
+    </ul>
+    <h3>Знания и навыки</h3>
+    <ul>
+        <li>HTML - семантическая разметка, по стандартам</li>
+        <li>CSS - наслышан о скриптах для сборки стилей</li>
+        <li id="shake">JS - <input type="submit" value="Shake it, baby!"></li>
+        <li>PHP/MySQL - для backend'а</li>
+    </ul>
+    <script>
+        window.onload = function () {
+            document.getElementById("shake").addEventListener("click", function () {
+                shake("shake", null, 20, 500);
+            });
+        }
+        function shake(e, oncomplete, distance, time) {
+            if (typeof e === "string") e = document.getElementById(e);
+            if (!time) time = 200;
+            if (!distance) distance = 15;
+            var originalStyle = e.style.cssText;
+            e.style.position = "relative";
+            var start = (new Date()).getTime();
+            animate();
+            function animate() {
+                var now = (new Date()).getTime();
+                var elapsed = now - start;
+                var fraction = elapsed / time;
+                var T = 20;
+                if (fraction < 1) {
+                    var x = distance * Math.sin(fraction * 4 * Math.PI);
+                    e.style.left = x + "px";
+                    setTimeout(animate, Math.min(T, time - elapsed));
+                }
+                else {
+                    e.style.cssText = originalStyle;
+                    if (oncomplete) oncomplete(e);
+                }
+            }
+        }
+
+    </script>
+</div>
+</body>
+</html>
